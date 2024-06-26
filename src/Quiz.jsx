@@ -71,24 +71,32 @@ export default function Header() {
     );
   }
   const answerOptions = quizData[currentQuestionIndex].options;
-
+  const currentQuestion=currentQuestionIndex+1;
   return (
     <div className="mainContainer">
+     
       {currentQuestionIndex >= quizData.length ? (
         <h1>Quiz completed</h1>
       ) : (
         <div className="quizContainer">
+          {/*showing score */}
           <h1 className="score">Score: {score}</h1>
           <hr></hr>
           <div className="progressBarContainer">
+
+            {/*progress bar */}
             <div className="progressBar" style={{ width: `${progress}%` }}>
               <h1></h1>
             </div>
           </div>
+          {/*indicating question number*/}
           <h1>
             Ques. {currentQuestionIndex + 1} out of {quizData.length}
           </h1>
           <h1 className="quest">{quizData[currentQuestionIndex].question}</h1>
+
+          {/*Listing  answer options*/}
+          
           <ul className="options">
             {answerOptions.map((answer, index) => (
               <button 
@@ -101,11 +109,15 @@ export default function Header() {
               </button>
             ))}
           </ul>
+
+              {/*Button to for nevigating to the next question */}
+
           <button onClick={gotoNextQuestion} className="nextBtn">
-            Next
+            {currentQuestion==quizData.length ?"Get Result":"Next"}
           </button>
         </div>
       )}
+       <h1 className='text-white'>Developed By Anurag Prajapat</h1>
     </div>
   );
 }
